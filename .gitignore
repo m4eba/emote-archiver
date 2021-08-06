@@ -1,0 +1,6 @@
+build
+out
+node_modules
+config.json
+tsconfig.tsbuildinfo
+env.source

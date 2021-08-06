@@ -1,0 +1,48 @@
+{
+  "name": "emote-archiver",
+  "version": "0.0.1",
+  "description": "archive twitch/bettertv/ffz emotes",
+  "author": "m4eba <m4eba.0@gmail.com>",
+  "main": "build/dump.js",
+  "license": "MIT",
+  "scripts": {
+    "compile": "tsc -b .",
+    "test": "jest",
+    "precommit": "npm run lint-fix && npm run prettier",
+    "prettier": "prettier --write 'src/**/**/*.ts'",
+    "lint": "eslint 'src/**/**/*.ts'",
+    "lint-fix": "eslint 'src/**/**/*.ts' --fix"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "jest": "^26.6.3",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.5.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "twitch": "^4.4.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
