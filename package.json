@@ -1,6 +1,6 @@
 {
   "name": "emote-archiver",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "archive twitch/bettertv/ffz emotes",
   "author": "m4eba <m4eba.0@gmail.com>",
   "main": "build/dump.js",
