@@ -8,6 +8,8 @@ import bettertv from './bettertv';
 import twitchglobal from './twitchglobal';
 import twitch from './twitch';
 import bettertvglobal from './bettertvglobal';
+import seventvglobal from './7tvglobal';
+import seventv from './7tv';
 
 if (process.argv.length !== 3) {
   console.log('usage node build/dump.js <folder>');
@@ -111,12 +113,14 @@ async function emotes(name: string) {
   await getEmotes(ffz, out, context, 'ffz');
   await getEmotes(bettertv, out, context, 'bettertv');
   await getEmotes(twitch, out, context, 'twitch');
+  await getEmotes(seventv, out, context, '7tv');
 }
 
 (async () => {
   await fs.promises.mkdir(path.join(out, 'ffz'), { recursive: true });
   await fs.promises.mkdir(path.join(out, 'bettertv'), { recursive: true });
   await fs.promises.mkdir(path.join(out, 'twitch'), { recursive: true });
+  await fs.promises.mkdir(path.join(out, '7tv'), { recursive: true });
   await fs.promises.mkdir(path.join(out, 'global'), { recursive: true });
 
   token = await getToken();
@@ -131,6 +135,7 @@ async function emotes(name: string) {
   };
   await getEmotes(twitchglobal, out, context, 'twitch');
   await getEmotes(bettertvglobal, out, context, 'bettertv');
+  await getEmotes(seventvglobal, out, context, '7tv');
 
   const channelFile = path.join(out, 'channels.txt');
   if (!(await fileExists(channelFile))) {
