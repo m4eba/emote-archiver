@@ -36,9 +36,10 @@ async function getToken(): Promise<string> {
     `https://id.twitch.tv/oauth2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=client_credentials&scope=user:read:email`,
     {
       method: 'POST',
+      signal: AbortSignal.timeout(5000),
     }
   );
-  const data = await resp.json();
+  const data = (await resp.json()) as any;
   return data.access_token;
 }
 
@@ -91,9 +92,10 @@ async function emotes(name: string) {
             Authorization: `Bearer ${token}`,
             'Client-ID': CLIENT_ID,
           },
+          signal: AbortSignal.timeout(5000),
         }
       );
-      const data = await resp.json();
+      const data = (await resp.json()) as any;
       id = data.data[0].id;
       await fs.promises.writeFile(idPath, id);
     } catch (e) {
