@@ -1,15 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
-import ffz from './ffz';
-import { downloadEmote, Emote } from './emote';
-import { Context, fileExists } from './utils';
-import bettertv from './bettertv';
-import twitchglobal from './twitchglobal';
-import twitch from './twitch';
-import bettertvglobal from './bettertvglobal';
-import seventvglobal from './7tvglobal';
-import seventv from './7tv';
+import ffz from './ffz.js';
+import { downloadEmote, Emote } from './emote.js';
+import { Context, fileExists } from './utils.js';
+import bettertv from './bettertv.js';
+import twitchglobal from './twitchglobal.js';
+import twitch from './twitch.js';
+import bettertvglobal from './bettertvglobal.js';
+import seventvglobal from './7tvglobal.js';
+import seventv from './7tv.js';
 
 if (process.argv.length !== 3) {
   console.log('usage node build/dump.js <folder>');

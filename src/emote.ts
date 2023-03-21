@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 import moment from 'moment';
-import { fileExists } from './utils';
+import { fileExists } from './utils.js';
 
 export interface Emote {
   url: string;

@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { Context, diffSave } from './utils';
-import { Emote } from './emote';
+import { Context, diffSave } from './utils.js';
+import { Emote } from './emote.js';
 
 export default async function ffz(context: Context): Promise<Emote[]> {
   try {

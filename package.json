@@ -4,6 +4,7 @@
   "description": "archive twitch/bettertv/ffz emotes",
   "author": "m4eba <m4eba.0@gmail.com>",
   "main": "build/dump.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "compile": "tsc -b .",

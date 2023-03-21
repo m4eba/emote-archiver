@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { Emote } from './emote';
-import { Context, diffSave } from './utils';
+import { Emote } from './emote.js';
+import { Context, diffSave } from './utils.js';
 
 function getEmotes(
   emotes: Array<{ id: string; imageType: string }>
