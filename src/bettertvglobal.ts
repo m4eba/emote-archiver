@@ -19,7 +19,7 @@ export default async function bettertvglobal(
         result.push({
           name: e.id + '-' + zoom,
           url: `https://cdn.betterttv.net/emote/${e.id}/${zoom}x`,
-          ext: e.imageType,
+          ext: '.' + e.imageType,
         });
       });
     }

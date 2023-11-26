@@ -20,7 +20,7 @@ export default async function ffz(context: Context): Promise<Emote[]> {
           result.push({
             url: 'https:' + e.urls[u],
             name: e.id + '-' + u,
-            ext: 'png',
+            ext: '.png',
           });
         }
       }

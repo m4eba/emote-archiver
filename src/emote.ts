@@ -79,8 +79,8 @@ export async function downloadEmote(out: string, emote: Emote): Promise<void> {
         }
         data.modified[`${emote.name}.${data.count}`] = latest;
         await fs.promises.rename(
-          path.join(out, `${emote.name}.${emote.ext}`),
-          path.join(out, `${emote.name}.${data.count}.${emote.ext}`)
+          path.join(out, `${emote.name}${emote.ext}`),
+          path.join(out, `${emote.name}.${data.count}${emote.ext}`)
         );
       } catch (e) {
         console.log(e);

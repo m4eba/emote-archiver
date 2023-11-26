@@ -20,7 +20,7 @@ export default async function twitchglobal(context: Context): Promise<Emote[]> {
         result.push({
           name: e.id + '-' + key.substr(4, 1),
           url: e.images[key],
-          ext: 'png',
+          ext: '.png',
         });
       }
     }
