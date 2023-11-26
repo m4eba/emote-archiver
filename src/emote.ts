@@ -15,6 +15,37 @@ export interface MetaFile {
   modified: { [name: string]: string };
 }
 
+export function timeoutPipe(
+  ins: NodeJS.ReadableStream,
+  outs: NodeJS.WritableStream,
+  timeout: number
+): Promise<number> {
+  return new Promise((resolve, reject) => {
+    let size = 0;
+    function timeoutFailed(): void {
+      reject('read timeout');
+    }
+    let timer = setTimeout(timeoutFailed, timeout);
+    ins.on('close', () => {
+      clearTimeout(timer);
+      outs.end();
+      resolve(size);
+    });
+    ins.on('end', () => {
+      clearTimeout(timer);
+      outs.end();
+      resolve(size);
+    });
+
+    ins.on('data', (chunk: Buffer) => {
+      size += chunk.length;
+      outs.write(chunk);
+      clearTimeout(timer);
+      timer = setTimeout(timeoutFailed, timeout);
+    });
+  });
+}
+
 export async function downloadEmote(out: string, emote: Emote): Promise<void> {
   console.log('write', emote);
   try {
@@ -60,11 +91,11 @@ export async function downloadEmote(out: string, emote: Emote): Promise<void> {
     data.count = data.count + 1;
     data.modified[emote.name] = modified;
 
-    const buf = await resp.buffer();
-    await fs.promises.writeFile(
-      path.join(out, `${emote.name}.${emote.ext}`),
-      buf
+    if (!resp.body) throw new Error('no body');
+    const bufOut = fs.createWriteStream(
+      path.join(out, `${emote.name}${emote.ext}`)
     );
+    await timeoutPipe(resp.body, bufOut, 30 * 1000);
     await fs.promises.writeFile(metaFilename, JSON.stringify(data, null, ' '));
 
     console.log('modified', modified);
