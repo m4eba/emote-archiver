@@ -7,12 +7,9 @@ export default async function seventvglobal(
   context: Context
 ): Promise<Emote[]> {
   try {
-    const resp = await fetch(
-      'https://7tv.io/v3/emote-sets/62cdd34e72a832540de95857',
-      {
-        signal: AbortSignal.timeout(5000),
-      }
-    );
+    const resp = await fetch('https://7tv.io/v3/emote-sets/global', {
+      signal: AbortSignal.timeout(5000),
+    });
     const data = (await resp.json()) as any;
     const result: Array<Emote> = extractEmoteSet(data);
 
